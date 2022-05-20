@@ -1,3 +1,4 @@
+
 class GameBoard:
 
     def __init__(self):
@@ -26,6 +27,7 @@ class GameBoard:
 
     def gameboard_randomize(self):
         pass
+
 # for row in range(len(gameMap)):
 #    for col in range(len(gameMap[row])):
 #        if 0 < row < 19:
