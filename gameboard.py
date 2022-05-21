@@ -25,8 +25,7 @@ class GameBoard:
             ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
         ]
 
-    def gameboard_randomize(self):
-        pass
+
 
 # for row in range(len(gameMap)):
 #    for col in range(len(gameMap[row])):
