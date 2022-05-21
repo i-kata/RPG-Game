@@ -1,16 +1,18 @@
 from window import Window
+from square import Square
 import pygame
 import sys
+
 
 class GameController:
 
     def __init__(self):
         self.window = Window(1280, 720)
 
-    def gameMap_randomize(self):  # method to randomize non-player objects spawning
-        for row in range(len(self.window.gameMap)):
-            for col in range(len(self.window.gameMap)):
-                print(self.window.gameMap[row][col], end='')
+    def print_gameboard(self):  # method to randomize non-player objects spawning
+        for row in range(len(self.window.gameboard)):
+            for col in range(len(self.window.gameboard)):
+                print(self.window.gameboard[row][col], end='')
             print()
 
     def run_game(self):
@@ -20,6 +22,8 @@ class GameController:
                     pygame.quit()
                     sys.exit()
 
+            for x in range(len(self.window.pos_color_array)):
+                print("POS TUPPLE: " + str(self.window.pos_color_array[x][0]))
+                print("COL TUPPLE: " + str(self.window.pos_color_array[x][1]))
+
             pygame.display.update()
-            self.window.screen.fill('black')
-            pygame.draw.rect(self.window.screen, (255, 0, 200), (50, 50, 100, 100))
