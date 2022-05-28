@@ -1,15 +1,16 @@
 from window import Window
-from square import Square
+from gameboard import GameBoard
 import pygame
 import sys
 
 
-class GameController:
+class GameController(GameBoard):
 
     def __init__(self):
+        super().__init__()
         self.window = Window(1280, 720)
 
-    def print_gameboard(self):  # method to randomize non-player objects spawning
+    def print_gameboard(self):
         for row in range(len(self.window.gameboard)):
             for col in range(len(self.window.gameboard)):
                 print(self.window.gameboard[row][col], end='')

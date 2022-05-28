@@ -1,3 +1,5 @@
+from square import Square
+
 
 class GameBoard:
 
@@ -25,35 +27,35 @@ class GameBoard:
             ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
         ]
 
-        self.pos_color_array = []
+        self.pos_color_list: list[Square] = []
 
 
-    def gen_pos_color_array(self):
+    def gen_pos_color_list(self):
+
         for row in range(len(self.gameboard)):
             for col in range(len(self.gameboard[row])):
 
-                rect_arr = []
-                width = 64
-                height = 64
-                posx = row*width
-                posy = col*height
-                pos_tuple = (posx, posy, width, height)
-                rect_arr.append(pos_tuple)
-
                 if self.gameboard[row][col] == 'x':
-                    color_tuple = (255, 100, 0)
-                    rect_arr.append(color_tuple)
-                elif self.gameboard[row][col] == 'p':
-                    color_tuple = (255, 150, 0)
-                    rect_arr.append(color_tuple)
+                    self.pos_color_list.append(Square(posx=Square.width*col,
+                                                      posy=Square.height*row,
+                                                      color_tuple=(255, 50, 0)))
+
+                elif self.gameboard[row][col] == ' ':
+                    self.pos_color_list.append(Square(posx=Square.width*col,
+                                                      posy=Square.height*row,
+                                                      color_tuple=(255, 150, 0)))
+
                 else:
-                    color_tuple = (255, 200, 0)
-                    rect_arr.append(color_tuple)
+                    self.pos_color_list.append(Square(posx=Square.width*col,
+                                                      posy=Square.height*row,
+                                                      color_tuple=(255, 100, 0)))
 
-                self.pos_color_array.append(rect_arr)
-
-    def print_pos_array(self):
-        print(self.pos_color_array)
+    def print_pos_color_list(self):
+        for pos in range(len(self.pos_color_list)):
+            print("Square nr: " + str(pos) + "\n" +
+                  "\t" + "posx: " + str(self.pos_color_list[pos].posx) +
+                  "\t" + "posy: " + str(self.pos_color_list[pos].posy) +
+                  "\t" + "color_tuple: " + str(self.pos_color_list[pos].color_tuple))
 
 # for row in range(len(gameboard)):
 #    for col in range(len(gameboard[row])):
