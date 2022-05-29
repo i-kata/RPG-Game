@@ -33,4 +33,7 @@ class GameController(GameBoard):
                                      Square.width,
                                      Square.height
                                  ])
+
+            self.pos_color_list[0].move()
+
             pygame.display.update()

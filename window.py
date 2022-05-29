@@ -1,7 +1,7 @@
 import pygame
 
 
-class Window():
+class Window:
 
     def __init__(self, height, width):
         super().__init__()

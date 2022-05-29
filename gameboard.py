@@ -1,6 +1,7 @@
 from square import Square
 from player import Player
 
+
 class GameBoard:
 
     def __init__(self):
@@ -27,28 +28,35 @@ class GameBoard:
             ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],
         ]
 
-        self.pos_color_list: list[Square] = []
-
+        self.pos_color_list: list[Player, Square] = []
 
     def gen_pos_color_list(self):
+
+        player_found = False
 
         for row in range(len(self.gameboard)):
             for col in range(len(self.gameboard[row])):
 
-                if self.gameboard[row][col] == 'x':
-                    self.pos_color_list.append(Square(posx=Square.width*col,
+                if self.gameboard[row][col] == 'p' and player_found is False:
+                    player_found = True
+                    self.pos_color_list.append(Player(posx=Square.width*col,
                                                       posy=Square.height*row,
-                                                      color_tuple=(255, 50, 0)))
+                                                      color_tuple=(255, 100, 0)))
+                    if player_found is True:
+                        break
 
-                elif self.gameboard[row][col] == ' ':
+        for row in range(len(self.gameboard)):
+            for col in range(len(self.gameboard[row])):
+
+                if self.gameboard[row][col] == 'x' and player_found is True:
                     self.pos_color_list.append(Square(posx=Square.width*col,
                                                       posy=Square.height*row,
                                                       color_tuple=(255, 150, 0)))
 
-                else:
-                    self.pos_color_list.append(Player(posx=Square.width*col,
+                if self.gameboard[row][col] == ' ' and player_found is True:
+                    self.pos_color_list.append(Square(posx=Square.width*col,
                                                       posy=Square.height*row,
-                                                      color_tuple=(255, 100, 0)))
+                                                      color_tuple=(255, 50, 0)))
 
     def print_pos_color_list(self):
         for pos in range(len(self.pos_color_list)):
