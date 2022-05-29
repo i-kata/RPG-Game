@@ -1,5 +1,6 @@
 from window import Window
 from gameboard import GameBoard
+from square import Square
 import pygame
 import sys
 
@@ -11,9 +12,9 @@ class GameController(GameBoard):
         self.window = Window(1280, 720)
 
     def print_gameboard(self):
-        for row in range(len(self.window.gameboard)):
-            for col in range(len(self.window.gameboard)):
-                print(self.window.gameboard[row][col], end='')
+        for row in range(len(self.gameboard)):
+            for col in range(len(self.gameboard)):
+                print(self.gameboard[row][col], end='')
             print()
 
     def run_game(self):
@@ -23,8 +24,13 @@ class GameController(GameBoard):
                     pygame.quit()
                     sys.exit()
 
-            for x in range(len(self.window.pos_color_array)):
-                print("POS TUPPLE: " + str(self.window.pos_color_array[x][0]))
-                print("COL TUPPLE: " + str(self.window.pos_color_array[x][1]))
-
+            for pos in range(len(self.pos_color_list)):
+                pygame.draw.rect(self.window.screen,
+                                 self.pos_color_list[pos].color_tuple,
+                                 [
+                                     self.pos_color_list[pos].posx,
+                                     self.pos_color_list[pos].posy,
+                                     Square.width,
+                                     Square.height
+                                 ])
             pygame.display.update()

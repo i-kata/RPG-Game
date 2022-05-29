@@ -1,8 +1,7 @@
 import pygame
-from gameboard import GameBoard
 
 
-class Window(GameBoard):
+class Window():
 
     def __init__(self, height, width):
         super().__init__()
