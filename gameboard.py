@@ -1,5 +1,5 @@
 from square import Square
-
+from player import Player
 
 class GameBoard:
 
@@ -46,7 +46,7 @@ class GameBoard:
                                                       color_tuple=(255, 150, 0)))
 
                 else:
-                    self.pos_color_list.append(Square(posx=Square.width*col,
+                    self.pos_color_list.append(Player(posx=Square.width*col,
                                                       posy=Square.height*row,
                                                       color_tuple=(255, 100, 0)))
 
